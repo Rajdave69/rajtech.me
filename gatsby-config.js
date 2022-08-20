@@ -3,7 +3,7 @@ require(`dotenv`).config()
 const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
-  pathPrefix: `/raj`,
+  pathPrefix: `/me`,
   siteMetadata: {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
@@ -11,7 +11,7 @@ module.exports = {
     siteTitle: `Raj Dave | About Me`,
     siteTitleAlt: `Raj Dave | About Me`,
     siteHeadline: `Raj Dave | About Me`,
-    siteUrl: `https://moonball.io/raj`,
+    siteUrl: `https://rajtech.me/me`,
     siteDescription: `My simple About Me page`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
@@ -29,7 +29,6 @@ module.exports = {
         name: `Cara - @lekoarts/gatsby-theme-cara`,
         short_name: `Cara`,
         description: `Playful and Colorful One-Page portfolio featuring Parallax effects and animations`,
-        start_url: `/`,
         background_color: `#141821`,
         // This will impact how browsers show your PWA/website
         // https://css-tricks.com/meta-theme-color-and-trickery/
