@@ -11,7 +11,7 @@ module.exports = {
     siteTitle: `Raj Dave | About Me`,
     siteTitleAlt: `Raj Dave | About Me`,
     siteHeadline: `Raj Dave | About Me`,
-    siteUrl: `https://rajtech.me/me`,
+    siteUrl: `https://rajtech.me`,
     siteDescription: `My simple About Me page`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
