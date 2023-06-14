@@ -1,3 +1,6 @@
+# This workflow will build a React app with node.js and then deploy it to a local server through ssh.
+# Required secrets: SSH_USER, SSH_HOST, SSH_PORT, SSH_PRIVATE_KEY
+
 name: Node.js CI
 
 on:
@@ -26,7 +29,6 @@ jobs:
             echo "Unable to determine packager manager"
             exit 1
           fi
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
@@ -42,7 +44,6 @@ jobs:
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         
@@ -54,8 +55,8 @@ jobs:
       # Checks out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: SFTP Delete
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@master
         with:
           username: ${{ secrets.SSH_USER }}
           server: ${{ secrets.SSH_HOST }}
@@ -64,13 +65,13 @@ jobs:
           remote_path: /var/www/bpsapi.rajtech.me/docs/
           args: '-o ConnectTimeout=5 rm -rf *'
 
-      - name: SFTP Deploy
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
-        with:
-          username: ${{ secrets.SSH_USER }}
-          server: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          local_path: ./*
-          remote_path: /var/www/bpsapi.rajtech.me/docs/
+          # will delete all remove files before copying
+          delete_remote_files: true
+
+          # will put all file under this path
+          local_path: ./* # default is ./*
+          # files will copy to under remote_path
+          remote_path: /var/www/rajtech.me/me
+
+          # sftp args
           args: '-o ConnectTimeout=5'
