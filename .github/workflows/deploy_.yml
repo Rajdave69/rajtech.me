@@ -62,7 +62,7 @@ jobs:
           server: ${{ secrets.SSH_HOST }}
           port: ${{ secrets.SSH_PORT }}
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote_path: /var/www/bpsapi.rajtech.me/docs/
+          remote_path: /var/www/rajtech.me/me
           args: '-o ConnectTimeout=5 rm -rf *'
 
           # will delete all remove files before copying
@@ -70,8 +70,3 @@ jobs:
 
           # will put all file under this path
           local_path: ./* # default is ./*
-          # files will copy to under remote_path
-          remote_path: /var/www/rajtech.me/me
-
-          # sftp args
-          args: '-o ConnectTimeout=5'
