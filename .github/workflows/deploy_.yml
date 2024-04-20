@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build React Project
-        run: npm run build
+        run: gatsby build --prefix-paths
 
       - name: Deploy to Local Server
         uses: appleboy/scp-action@master
