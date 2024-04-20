@@ -19,7 +19,10 @@ jobs:
           node-version: 16
 
       - name: Install Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
+
+      - name: Install gatsby CUI
+        run: npm install gatsby-cli
 
       - name: Build React Project
         run: gatsby build --prefix-paths
